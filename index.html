@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M/S Singh Mart Enterprises | Official Store</title>
+    <style>
+        :root { --primary: #1e40af; --bg: #f8fafc; --text: #1e293b; --accent: #16a34a; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, sans-serif; }
+        body { color: var(--text); background: var(--bg); line-height: 1.6; }
+        
+        header { background: var(--primary); color: #fff; padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+        .logo { font-size: 1.25rem; font-weight: bold; }
+        nav { display: flex; gap: 15px; flex-wrap: wrap; }
+        nav button { background: none; border: none; color: #fff; font-size: 0.95rem; cursor: pointer; font-weight: 500; }
+        nav button:hover { text-decoration: underline; }
+
+        .container { max-width: 1000px; margin: 2rem auto; padding: 0 5%; min-height: 65vh; }
+        .page { display: none; }
+        .page.active { display: block; }
+
+        .hero { background: #fff; padding: 2.5rem 1.5rem; border-radius: 10px; text-align: center; border: 1px solid #e2e8f0; margin-bottom: 2rem; }
+        .hero h1 { color: var(--primary); margin-bottom: 0.5rem; font-size: 1.8rem; }
+        
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; }
+        .card { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1.2rem; text-align: center; }
+        .price { color: var(--accent); font-size: 1.2rem; font-weight: bold; margin: 8px 0; }
+        .btn { background: var(--accent); color: #fff; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-weight: 600; width: 100%; }
+
+        .legal-card { background: #fff; padding: 2rem; border-radius: 10px; border: 1px solid #e2e8f0; }
+        .legal-card h2 { color: var(--primary); margin-bottom: 1rem; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem; }
+        .legal-card h3 { margin: 1.2rem 0 0.4rem; font-size: 1.05rem; color: #0f172a; }
+        .legal-card p, .legal-card li { font-size: 0.95rem; color: #475569; margin-bottom: 0.6rem; }
+        .legal-card ul { padding-left: 1.2rem; }
+
+        footer { background: #0f172a; color: #cbd5e1; padding: 2rem 5%; margin-top: 3rem; font-size: 0.9rem; }
+        .footer-links { display: flex; flex-wrap: wrap; gap: 15px; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid #334155; }
+        .footer-links button { background: none; border: none; color: #93c5fd; cursor: pointer; font-size: 0.9rem; }
+        
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); justify-content: center; align-items: center; }
+        .modal-box { background: #fff; padding: 1.5rem; border-radius: 8px; width: 90%; max-width: 380px; }
+        .modal-box input { width: 100%; padding: 8px; margin: 6px 0; border: 1px solid #cbd5e1; border-radius: 4px; }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">M/S Singh Mart Enterprises</div>
+    <nav>
+        <button onclick="showPage('home')">Home</button>
+        <button onclick="showPage('about')">About Us</button>
+        <button onclick="showPage('terms')">Terms & Conditions</button>
+        <button onclick="showPage('privacy')">Privacy Policy</button>
+        <button onclick="showPage('refund')">Refund Policy</button>
+        <button onclick="showPage('shipping')">Shipping Policy</button>
+        <button onclick="showPage('contact')">Contact Us</button>
+    </nav>
+</header>
+
+<div class="container">
+    <!-- HOME PAGE -->
+    <div id="home" class="page active">
+        <div class="hero">
+            <h1>Welcome to M/S Singh Mart Enterprises</h1>
+            <p>Your trusted online & retail destination for Daily Groceries, Cold Drinks, Packaged Snacks, and Fashion Hair Accessories.</p>
+        </div>
+        <div class="grid">
+            <div class="card">
+                <h3>Matte Hair Claw Clips (Pack of 4)</h3>
+                <p style="font-size:0.85rem; color:#64748b;">Trendy non-slip matte finish hair clips combo.</p>
+                <div class="price">₹199.00</div>
+                <button class="btn" onclick="openOrder('Matte Hair Claw Clips (Pack of 4)', 199)">Buy Now</button>
+            </div>
+            <div class="card">
+                <h3>Assorted Cold Drinks & Juices Pack</h3>
+                <p style="font-size:0.85rem; color:#64748b;">Combo pack of 6 x 500ml refreshing soft drinks & juices.</p>
+                <div class="price">₹240.00</div>
+                <button class="btn" onclick="openOrder('Assorted Cold Drinks & Juices Pack', 240)">Buy Now</button>
+            </div>
+            <div class="card">
+                <h3>Family Namkeen & Snacks Combo</h3>
+                <p style="font-size:0.85rem; color:#64748b;">Freshly packed biscuits, namkeen, and evening snacks.</p>
+                <div class="price">₹350.00</div>
+                <button class="btn" onclick="openOrder('Family Namkeen & Snacks Combo', 350)">Buy Now</button>
+            </div>
+            <div class="card">
+                <h3>Monthly Kitchen Grocery Kit</h3>
+                <p style="font-size:0.85rem; color:#64748b;">Essential pulses, cooking oil, spices, and household staples.</p>
+                <div class="price">₹999.00</div>
+                <button class="btn" onclick="openOrder('Monthly Kitchen Grocery Kit', 999)">Buy Now</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ABOUT US -->
+    <div id="about" class="page">
+        <div class="legal-card">
+            <h2>About Us</h2>
+            <p><strong>M/S Singh Mart Enterprises</strong> is a registered sole proprietorship business owned and managed by <strong>Arjun Singh</strong>.</p>
+            <p>Operating from Sahsan Main Road, Adda, Village Sahsan, Tehsil Pahari, District Deeg, Rajasthan - 321024, we supply quality daily groceries, beverages, snacks, and fashion & lifestyle accessories (such as hair claw clips) to customers across India.</p>
+        </div>
+    </div>
+
+    <!-- TERMS & CONDITIONS -->
+    <div id="terms" class="page">
+        <div class="legal-card">
+            <h2>Terms & Conditions</h2>
+            <p>Last Updated: November 2026</p>
+            <p>Welcome to <strong>M/S Singh Mart Enterprises</strong>. By accessing our website and purchasing products from us, you agree to be bound by the following Terms & Conditions:</p>
+            <h3>1. General Use</h3>
+            <ul>
+                <li>All products listed on this website are subject to availability.</li>
+                <li>Prices are mentioned in Indian Rupees (INR) and include applicable taxes unless stated otherwise.</li>
+                <li>We reserve the right to modify product prices or discontinue items without prior notice.</li>
+            </ul>
+            <h3>2. Orders & Payments</h3>
+            <ul>
+                <li>Customers must provide accurate name, mobile number, and complete delivery address at checkout.</li>
+                <li>Payments are processed securely via RBI-authorized payment gateways (Cashfree Payments) supporting UPI, Debit/Credit Cards, and NetBanking.</li>
+                <li>An order is confirmed only after successful payment authorization.</li>
+            </ul>
+            <h3>3. Governing Law</h3>
+            <p>These terms shall be governed by and construed in accordance with the laws of India. Any disputes are subject to the jurisdiction of courts in District Deeg, Rajasthan.</p>
+        </div>
+    </div>
+
+    <!-- PRIVACY POLICY -->
+    <div id="privacy" class="page">
+        <div class="legal-card">
+            <h2>Privacy Policy</h2>
+            <p>At <strong>M/S Singh Mart Enterprises</strong>, protecting your personal information is our priority.</p>
+            <h3>1. Information We Collect</h3>
+            <p>When you place an order, we collect your Name, Phone Number, Email Address, and Delivery Address solely for order fulfillment and customer support.</p>
+            <h3>2. Payment Security</h3>
+            <p>We do not store your Credit/Debit card numbers, CVV, or UPI PIN on our servers. All transactions are encrypted and handled securely by Cashfree Payments.</p>
+            <h3>3. Data Sharing</h3>
+            <p>We never sell or rent your personal data to third parties. Delivery details are shared only with our courier partners to deliver your order.</p>
+        </div>
+    </div>
+
+    <!-- REFUND & CANCELLATION POLICY -->
+    <div id="refund" class="page">
+        <div class="legal-card">
+            <h2>Refund & Cancellation Policy</h2>
+            <h3>1. Order Cancellation</h3>
+            <p>You may cancel your order within <strong>2 hours</strong> of placing it (before dispatch) by calling or emailing our support team. Once dispatched, orders cannot be cancelled.</p>
+            <h3>2. Return & Replacement</h3>
+            <ul>
+                <li><strong>Fashion & Lifestyle Accessories (e.g., Hair Clips):</strong> Eligible for return/replacement within <strong>5 days</strong> of delivery if received damaged, defective, or incorrect, provided the item is unused and in original packaging.</li>
+                <li><strong>Groceries, Snacks & Beverages:</strong> Due to food safety and hygiene reasons, food items are non-returnable unless delivered damaged or expired.</li>
+            </ul>
+            <h3>3. Refund Processing</h3>
+            <p>Once your return or cancellation is approved, the refund will be initiated within 24–48 hours and credited back to your original payment method within <strong>5–7 business days</strong>.</p>
+        </div>
+    </div>
+
+    <!-- SHIPPING & DELIVERY POLICY -->
+    <div id="shipping" class="page">
+        <div class="legal-card">
+            <h2>Shipping & Delivery Policy</h2>
+            <h3>1. Dispatch Time</h3>
+            <p>All confirmed orders are packed and dispatched within <strong>24 to 48 hours</strong> (excluding Sundays and public holidays).</p>
+            <h3>2. Delivery Timeline</h3>
+            <ul>
+                <li><strong>Local Delivery (Deeg / Bharatpur District):</strong> 1 to 2 business days.</li>
+                <li><strong>Rest of India (via Courier Partners):</strong> 3 to 6 business days depending on your pin code.</li>
+            </ul>
+            <h3>3. Shipping Charges</h3>
+            <p>Standard shipping charges (if applicable based on order weight and location) are clearly displayed before payment.</p>
+        </div>
+    </div>
+
+    <!-- CONTACT US -->
+    <div id="contact" class="page">
+        <div class="legal-card">
+            <h2>Contact Us</h2>
+            <p>For any queries regarding orders, payments, returns, or support, reach out to us:</p>
+            <p><strong>Legal Business Name:</strong> M/S Singh Mart Enterprises</p>
+            <p><strong>Proprietor:</strong> Arjun Singh</p>
+            <p><strong>Registered Address:</strong> Sahsan Main Road, Adda, Village Sahsan, Tehsil Pahari, District Deeg, Rajasthan - 321024</p>
+            <p><strong>Phone / WhatsApp:</strong> +91-XXXXXXXXXX</p>
+            <p><strong>Email:</strong> support@singhmartenterprises.in</p>
+            <p><strong>Working Hours:</strong> Monday to Saturday, 9:00 AM – 7:00 PM</p>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-links">
+        <button onclick="showPage('home')">Home</button>
+        <button onclick="showPage('about')">About Us</button>
+        <button onclick="showPage('terms')">Terms & Conditions</button>
+        <button onclick="showPage('privacy')">Privacy Policy</button>
+        <button onclick="showPage('refund')">Refund Policy</button>
+        <button onclick="showPage('shipping')">Shipping Policy</button>
+        <button onclick="showPage('contact')">Contact Us</button>
+    </div>
+    <p><strong>M/S Singh Mart Enterprises</strong> | Sahsan Main Road, Adda, Village Sahsan, Tehsil Pahari, District Deeg, Rajasthan - 321024</p>
+    <p style="margin-top:5px; font-size:0.8rem;">&copy; 2026 M/S Singh Mart Enterprises. All Rights Reserved.</p>
+</footer>
+
+<!-- Checkout Modal -->
+<div id="orderModal" class="modal">
+    <div class="modal-box">
+        <h3 style="color:var(--primary);">Checkout Details</h3>
+        <p id="mItem" style="font-weight:bold; margin-top:8px;"></p>
+        <p id="mPrice" style="color:var(--accent); font-weight:bold; margin-bottom:10px;"></p>
+        <input type="text" placeholder="Full Name" required>
+        <input type="tel" placeholder="10-Digit Mobile Number" required>
+        <input type="text" placeholder="Complete Address & Pincode" required>
+        <button class="btn" style="margin-top:8px;" onclick="alert('Order received! Payment link will be processed via Cashfree.')">Proceed to Pay</button>
+        <button onclick="document.getElementById('orderModal').style.display='none'" style="width:100%; background:none; border:none; margin-top:8px; color:#64748b; cursor:pointer;">Close</button>
+    </div>
+</div>
+
+<script>
+    function showPage(pageId) {
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        document.getElementById(pageId).classList.add('active');
+        window.scrollTo(0, 0);
+    }
+    function openOrder(item, price) {
+        document.getElementById('mItem').innerText = item;
+        document.getElementById('mPrice').innerText = 'Total: ₹' + price + '.00';
+        document.getElementById('orderModal').style.display = 'flex';
+    }
+</script>
+</body>
+</html>
